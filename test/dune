@@ -1,0 +1,7 @@
+(test
+ (name test_mcp)
+ (libraries
+  mcp_example
+  alcotest
+  qcheck-core
+  qcheck-alcotest))

@@ -1,0 +1,18 @@
+(library
+ (name mcp_example)
+ (modules
+   mcp
+   mcp_eio
+   import)
+ (libraries
+  core
+  eio
+  eio.unix
+  yojson
+  jsonrpc
+  ppx_yojson_conv)
+ (preprocess
+  (pps
+   ppx_deriving.show
+   ppx_yojson_conv
+   ppx_deriving_qcheck)))

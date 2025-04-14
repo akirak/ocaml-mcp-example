@@ -1,0 +1,6 @@
+(executable
+ (public_name mcp_example)
+ (name client_main)
+ (libraries
+  mcp_example
+  eio_main))
