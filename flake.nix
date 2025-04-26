@@ -1,13 +1,17 @@
 {
   inputs = {
     nixpkgs.url = "github:nix-ocaml/nix-overlays";
-    # systems.url = "github:nix-systems/default";
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
     {
       nixpkgs,
       self,
+      treefmt-nix,
       ...
     }:
     let
@@ -26,6 +30,8 @@
             )
           )
         );
+
+      treefmtEval = eachSystem (pkgs: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
     in
     {
       packages = eachSystem (
@@ -92,6 +98,8 @@
         };
       });
 
+      formatter = eachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
+
       checks = eachSystem (
         pkgs:
         let
@@ -100,6 +108,7 @@
         {
           package = self.packages.${system}.default;
           shell = self.devShells.${system}.default;
+          format = treefmtEval.${pkgs.system}.config.build.check self;
         }
       );
     };
