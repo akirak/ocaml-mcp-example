@@ -91,5 +91,16 @@
           ;
         };
       });
+
+      checks = eachSystem (
+        pkgs:
+        let
+          inherit (pkgs) system;
+        in
+        {
+          package = self.packages.${system}.default;
+          shell = self.devShells.${system}.default;
+        }
+      );
     };
 }
