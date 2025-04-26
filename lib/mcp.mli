@@ -1,8 +1,8 @@
 module Json = Jsonrpc.Json
 
+val current_version : string
 (** [current_version] is the latest version of the MCP specification supported
 by this library. *)
-val current_version : string
 
 type error = Jsonrpc.Response.Error.t
 
@@ -25,12 +25,14 @@ module type Properties = sig
   type key
 
   val gen_key : key QCheck.Gen.t
+
   val arb_key : key QCheck.arbitrary
 
   (** The type of values in the properties. *)
   type value
 
   val string_of_key : key -> string
+
   val key_of_string : string -> key
 
   (** The type of a list of key-value pairs. *)

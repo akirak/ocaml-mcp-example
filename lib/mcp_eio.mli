@@ -26,7 +26,5 @@ module Client : sig
   val close : t -> unit
 
   val resource_list :
-       params:Mcp.Resource_list.params
-    -> t
-    -> Mcp.Resource_list.result
+    params:Mcp.Resource_list.params -> t -> Mcp.Resource_list.result
 end

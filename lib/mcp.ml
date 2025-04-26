@@ -13,8 +13,9 @@ exception Json_decoding_error of string
 module type Extensible_key = sig
   type key
 
-  (** To be derived with ppx_deriving_qcheck *)
   val gen_key : key QCheck.Gen.t
+  (** To be derived with ppx_deriving_qcheck *)
+
   val arb_key : key QCheck.arbitrary
 
   (* To be derived with ppx_deriving_show *)
@@ -39,6 +40,7 @@ module type Properties = sig
   type key
 
   val gen_key : key QCheck.Gen.t
+
   val arb_key : key QCheck.arbitrary
 
   type value
@@ -46,6 +48,7 @@ module type Properties = sig
   type t = (key * value) list
 
   val string_of_key : key -> string
+
   val key_of_string : string -> key
 
   val yojson_of_t : t -> Json.t
@@ -62,11 +65,13 @@ module Make_properties (Key : Extensible_key) (Value : Jsonable2) :
   type key = Key.key
 
   let gen_key = Key.gen_key
+
   let arb_key = Key.arb_key
 
   type value = Value.t
 
   let string_of_key = Key.string_of_key
+
   let key_of_string = Key.key_of_string
 
   let pp_key = Key.pp_key
