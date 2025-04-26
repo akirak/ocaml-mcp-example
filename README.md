@@ -31,5 +31,5 @@ language would make sense.
 ## Status
 
 I am trying to implement a client that inspects an MCP server. My OCaml skills
-are at an elementary level, so it may take longer than with experienced
-functional programmers.
+are at an elementary level, so it will probably take longer than it would if it
+were done by an experienced functional programmer.
