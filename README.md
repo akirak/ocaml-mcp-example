@@ -3,10 +3,13 @@
 This is a demo repository for experimenting with [the Model Context
 Protocol](https://modelcontextprotocol.io/introduction) in OCaml.
 
-At present, there is no official MCP SDK for OCaml, nor did I find a third-party
+~~At present, there is no official MCP SDK for OCaml, nor did I find a third-party
 one available as an open source software. Thus I am trying to write a client and
 server library for the protocol as well, which is work in progress. This
-repository contains both a library and a demo application (or applications).
+repository contains both a library and a demo application (or applications).~~
+
+See [ocaml-mcp](https://github.com/tmattio/ocaml-mcp) for a more comprehensive
+implementation of MCP.
 
 ## Rationale
 
